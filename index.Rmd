@@ -22,12 +22,12 @@ summary(survey)
 ```{r ties, echo=FALSE}
 p <- ggplot(data = survey) +
   geom_bar(mapping = aes(x=tie))
-ggplotly(p)
+ggplotly(p) %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
 ```{r jacket, echo=FALSE}
 p <- ggplot(data = survey) +
   geom_bar(mapping = aes(x=jacket))
-ggplotly(p)
+ggplotly(p) %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
 
 ```{r surveyplot, include = FALSE}
