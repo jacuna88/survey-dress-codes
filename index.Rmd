@@ -38,9 +38,9 @@ ggplot(data = survey,
 ```{r surveyplot2, include = FALSE}
 ggplot(data = survey,
        mapping = aes(x=sleeve, y=length, color = region)) +
-  geom_point(position = 'jitter') + scale_y_reverse() +
-  xlim(0, 100) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
-  ylim(0, 100)    # Ensures y-axis starts at 0
+  geom_point(position = 'jitter') +
+  xlim(0, 105) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
+  ylim(0, 105)    # Ensures y-axis starts at 0
 ```
 
 
@@ -48,17 +48,17 @@ ggplot(data = survey,
 p <- ggplot(data = survey,
        mapping = aes(x=sleeve, y=neck, color = region, text = long)) +
   geom_point(position = 'jitter') +
-  xlim(0, 100) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
-  ylim(0, 100)    # Ensures y-axis starts at 0
+  xlim(-5, 105) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
+  ylim(-5, 105)    # Ensures y-axis starts at 0
 ggplotly(p, tooltip = "text") %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
 
 ```{r interactive2, echo=FALSE}
 p <- ggplot(data = survey,
        mapping = aes(x=sleeve, y=length, color = region, text = long)) +
-  geom_point(position = 'jitter') + scale_y_reverse() +
-  xlim(0, 100) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
-  ylim(100, 0)    # Ensures y-axis starts at 0
+  geom_point(position = 'jitter')  +
+  xlim(-5, 105) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
+  ylim(105, -5)    # Ensures y-axis starts at 0
 ggplotly(p, tooltip = "text") %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
 
