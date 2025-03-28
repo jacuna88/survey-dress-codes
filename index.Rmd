@@ -19,6 +19,16 @@ summary(survey)
 
 ## Plots
 
+```{r ties, echo=FALSE}
+p <- ggplot(data = survey) +
+  geom_bar(mapping = aes(x=tie))
+ggplotly(p)
+```
+```{r jacket, echo=FALSE}
+p <- ggplot(data = survey) +
+  geom_bar(mapping = aes(x=jacket))
+ggplotly(p)
+```
 
 ```{r surveyplot, include = FALSE}
 ggplot(data = survey,
@@ -51,3 +61,5 @@ p <- ggplot(data = survey,
   ylim(0, 100)    # Ensures y-axis starts at 0
 ggplotly(p, tooltip = "text") %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
+
+
