@@ -1,5 +1,5 @@
 ---
-title: "survey-dress"
+title: "Survey of dress codes"
 output: html_document
 date: "2025-03-28"
 ---
@@ -18,23 +18,37 @@ summary(survey)
 ```
 
 ## Plots
+### Men's attire
+Plenty of orchestras still use bow tie. Some have moved to no specific tie requirement.
+
+__Compare:__ Hover to show frequency.
 
 ```{r ties, echo=FALSE}
 p <- ggplot(data = survey) +
   geom_bar(mapping = aes(x=tie))
 ggplotly(p) %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
+Tail coat and vest is still common.
+
+__Compare:__ Hover to show frequency.
 ```{r jacket, echo=FALSE}
 p <- ggplot(data = survey) +
   geom_bar(mapping = aes(x=jacket))
 ggplotly(p) %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
 
+### Women's attire
+Sleeve, neck and attire length vary on different regions.
+
+__Guess the orchestra__: Hover to show orchestra name.
+
+__Compare regions__: Click to toggle, double-click to isolate.
 ```{r surveyplot, include = FALSE}
 ggplot(data = survey,
        mapping = aes(x=sleeve, y=neck, color = region)) +
   geom_point(position = 'jitter')
 ```
+
 ```{r surveyplot2, include = FALSE}
 ggplot(data = survey,
        mapping = aes(x=sleeve, y=length, color = region)) +
@@ -43,6 +57,7 @@ ggplot(data = survey,
   ylim(0, 105)    # Ensures y-axis starts at 0
 ```
 
+Hover to show orchestra name, double-click on region to isolate region, click to toggle
 
 ```{r interactive, echo=FALSE}
 p <- ggplot(data = survey,
