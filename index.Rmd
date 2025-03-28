@@ -29,15 +29,17 @@ ggplot(data = survey,
 ggplot(data = survey,
        mapping = aes(x=length, y=sleeve, color = region)) +
   geom_point(position = 'jitter') +
-  xlim(0, NA) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
-  ylim(0, NA)    # Ensures y-axis starts at 0
+  xlim(0, 100) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
+  ylim(0, 100)    # Ensures y-axis starts at 0
 ```
 
 
 ```{r interactive, echo=FALSE}
 p <- ggplot(data = survey,
        mapping = aes(x=sleeve, y=neck, color = region, text = long)) +
-  geom_point(position = 'jitter')
+  geom_point(position = 'jitter') +
+  xlim(0, 100) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
+  ylim(0, 100)    # Ensures y-axis starts at 0
 ggplotly(p, tooltip = "text")
 ```
 
