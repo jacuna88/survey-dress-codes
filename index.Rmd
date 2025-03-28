@@ -40,7 +40,7 @@ p <- ggplot(data = survey,
   geom_point(position = 'jitter') +
   xlim(0, 100) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
   ylim(0, 100)    # Ensures y-axis starts at 0
-ggplotly(p, tooltip = "text")
+ggplotly(p, tooltip = "text") %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
 
 ```{r interactive2, echo=FALSE}
@@ -49,5 +49,5 @@ p <- ggplot(data = survey,
   geom_point(position = 'jitter') +
   xlim(0, 100) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
   ylim(0, 100)    # Ensures y-axis starts at 0
-ggplotly(p, tooltip = "text")
+ggplotly(p, tooltip = "text") %>% layout(xaxis=list(fixedrange=TRUE)) %>% layout(yaxis=list(fixedrange=TRUE))
 ```
