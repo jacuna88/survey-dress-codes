@@ -1,0 +1,51 @@
+---
+title: "survey-dress"
+output: html_document
+date: "2025-03-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(plotly)
+```
+
+
+
+```{r load, include = FALSE}
+survey <- read.csv2("survey1.csv")
+summary(survey)
+```
+
+## Plots
+
+
+```{r surveyplot, include = FALSE}
+ggplot(data = survey,
+       mapping = aes(x=sleeve, y=neck, color = region)) +
+  geom_point(position = 'jitter')
+```
+```{r surveyplot2, include = FALSE}
+ggplot(data = survey,
+       mapping = aes(x=length, y=sleeve, color = region)) +
+  geom_point(position = 'jitter') +
+  xlim(0, NA) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
+  ylim(0, NA)    # Ensures y-axis starts at 0
+```
+
+
+```{r interactive, echo=FALSE}
+p <- ggplot(data = survey,
+       mapping = aes(x=sleeve, y=neck, color = region, text = long)) +
+  geom_point(position = 'jitter')
+ggplotly(p, tooltip = "text")
+```
+
+```{r interactive2, echo=FALSE}
+p <- ggplot(data = survey,
+       mapping = aes(x=length, y=sleeve, color = region, text = long)) +
+  geom_point(position = 'jitter') +
+  xlim(0, 100) +  # Ensures x-axis starts at 0, NA allows automatic upper limit
+  ylim(0, 100)    # Ensures y-axis starts at 0
+ggplotly(p, tooltip = "text")
+```
